@@ -1,3 +1,4 @@
 function greet() {
-    console.log("Hello from main (updated)");
+    console.log("Hello from ALL");
+
 }
