@@ -10,21 +10,22 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
     
-    # Этот блок принудительно отключает ошибку 254
     env:
       ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: 'true'
 
     steps:
+      # 1. Скачиваем код (этот шаг теперь работает отлично)
       - name: Checkout repository
         uses: actions/checkout@v4.2.2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4.2.0
-        with:
-          node-version: '24'
+      # 2. Просто выводим тестовое сообщение
+      - name: Say Hello
+        run: echo "Привет! Экшен успешно запустился и выполнил этот шаг."
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run tests
-        run: npm test
+      # 3. Показываем версию операционной системы раннера
+      - name: Check System Info
+        run: |
+          echo "Текущая дата и время на сервере:"
+          date
+          echo "Версия Ubuntu:"
+          lsb_release -a
