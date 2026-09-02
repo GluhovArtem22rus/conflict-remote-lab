@@ -3,9 +3,9 @@ name: CI Run Tests
 # 1. Определяем триггеры (когда запускать экшен)
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 # 2. Определяем список задач (jobs)
 jobs:
