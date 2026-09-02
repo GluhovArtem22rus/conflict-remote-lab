@@ -1,38 +1,31 @@
 name: CI Run Tests
 
-# 1. Определяем триггеры (когда запускать экшен)
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "main" ]
 
-# 2. Определяем список задач (jobs)
 jobs:
   build-and-test:
-    # Запускаем на чистой виртуальной машине с Ubuntu
     runs-on: ubuntu-latest
 
-    # Шаги, которые выполняются внутри задачи
     steps:
-      # Шаг 1: Скачиваем код репозитория на виртуальную машину
+      # Используем обновленный шаг для скачивания кода
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.2.2
 
-      # Шаг 2: Устанавливаем Node.js нужной версии
+      # Устанавливаем актуальную Node.js 24
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v4.2.0
         with:
-          node-version: '20'
+          node-version: '24'
 
-      # Шаг 3: Просто выводим сообщение в консоль (для проверки)
       - name: Say Hello
-        run: echo "Привет! Окружение готово, начинаем установку зависимостей."
+        run: echo "Привет! Окружение на Node 24 готово."
 
-      # Шаг 4: Устанавливаем пакеты (если они есть)
       - name: Install dependencies
         run: npm install
 
-      # Шаг 5: Запускаем тесты
       - name: Run tests
         run: npm test
