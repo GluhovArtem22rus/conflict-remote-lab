@@ -9,20 +9,19 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    
+    # Этот блок принудительно отключает ошибку 254
+    env:
+      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: 'true'
 
     steps:
-      # Используем обновленный шаг для скачивания кода
       - name: Checkout repository
         uses: actions/checkout@v4.2.2
 
-      # Устанавливаем актуальную Node.js 24
       - name: Set up Node.js
         uses: actions/setup-node@v4.2.0
         with:
           node-version: '24'
-
-      - name: Say Hello
-        run: echo "Привет! Окружение на Node 24 готово."
 
       - name: Install dependencies
         run: npm install
