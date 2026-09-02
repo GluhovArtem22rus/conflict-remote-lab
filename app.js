@@ -1,3 +1,4 @@
 function greet() {
-    console.log("Hello from feature-b");
+    console.log("Hello from ALL");
+
 }
